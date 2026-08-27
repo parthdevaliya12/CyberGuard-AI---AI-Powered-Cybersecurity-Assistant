@@ -39,7 +39,7 @@ const authLimiter = rateLimit({
 // Stricter rate limit for AI routes
 const aiLimiter = rateLimit({
   windowMs: 1 * 60 * 1000, // 1 minute
-  max: 10,
+  max: 100, // Increased from 10 to 100 to prevent 429s during dev
   message: { success: false, message: 'Too many AI requests, please try again later.' },
 });
 

@@ -86,8 +86,15 @@ exports.sendMessage = async (req, res, next) => {
       .sort({ createdAt: 1 })
       .limit(20);
 
-    // Process with AI agent
-    const aiResponse = await processMessage(content, history, req.user._id);
+    let aiResponse;
+    try {
+      // Process with AI agent
+      aiResponse = await processMessage(content, history, req.user._id);
+    } catch (aiError) {
+      // If AI fails, delete the user message so it doesn't get orphaned
+      await Message.findByIdAndDelete(userMessage._id);
+      throw aiError;
+    }
 
     // Save AI response
     const assistantMessage = await Message.create({
