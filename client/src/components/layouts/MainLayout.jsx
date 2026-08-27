@@ -68,22 +68,22 @@ const MainLayout = ({ children }) => {
         </div>
 
         <nav className="sidebar-nav">
-          <div className="nav-section">
-            <span className="nav-section-title">Main</span>
-            {userLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`nav-link ${location.pathname === link.path ? 'nav-link-active' : ''}`}
-                onClick={() => setSidebarOpen(false)}
-              >
-                <link.icon size={18} />
-                <span>{link.label}</span>
-              </Link>
-            ))}
-          </div>
-
-          {user?.role === 'admin' && (
+          {user?.role !== 'admin' ? (
+            <div className="nav-section">
+              <span className="nav-section-title">Main</span>
+              {userLinks.map((link) => (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className={`nav-link ${location.pathname === link.path ? 'nav-link-active' : ''}`}
+                  onClick={() => setSidebarOpen(false)}
+                >
+                  <link.icon size={18} />
+                  <span>{link.label}</span>
+                </Link>
+              ))}
+            </div>
+          ) : (
             <div className="nav-section">
               <span className="nav-section-title">Administration</span>
               {adminLinks.map((link) => (

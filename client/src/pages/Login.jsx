@@ -17,9 +17,13 @@ const Login = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      await login(email, password);
+      const response = await login(email, password);
       toast.success('Welcome back! Login successful.');
-      navigate('/dashboard');
+      if (response?.user?.role === 'admin') {
+        navigate('/admin');
+      } else {
+        navigate('/dashboard');
+      }
     } catch (error) {
       toast.error(error.response?.data?.message || 'Login failed. Please try again.');
     } finally {
