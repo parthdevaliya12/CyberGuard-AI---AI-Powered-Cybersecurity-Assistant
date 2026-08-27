@@ -1087,6 +1087,7 @@ a:hover { color: var(--accent-hover); text-shadow: 0 0 8px var(--accent-glow); }
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-bottom: 8px;
+  white-space: nowrap;
 }
 
 .input-with-icon {
@@ -1105,7 +1106,7 @@ a:hover { color: var(--accent-hover); text-shadow: 0 0 8px var(--accent-glow); }
 
 .input-with-icon input {
   width: 100%;
-  padding: 12px 14px 12px 40px;
+  padding: 12px 40px 12px 40px;
   background: var(--bg-input);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
