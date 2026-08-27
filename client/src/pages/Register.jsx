@@ -21,8 +21,12 @@ const Register = () => {
       toast.error('Passwords do not match');
       return;
     }
-    if (password.length < 6) {
-      toast.warning('Password must be at least 6 characters');
+    
+    // Password validation regex: at least 8 chars, 1 uppercase, 1 lowercase, 1 number, 1 special char
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    
+    if (!passwordRegex.test(password)) {
+      toast.warning('Password must be at least 8 characters, include an uppercase letter, a lowercase letter, a number, and a special character.');
       return;
     }
     setLoading(true);
@@ -152,9 +156,9 @@ const Register = () => {
                       type={showPassword ? 'text' : 'password'}
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      placeholder="Min. 6 characters"
+                      placeholder="Min. 8 chars (A-Z, a-z, 0-9, @$!%*?&)"
                       required
-                      minLength={6}
+                      minLength={8}
                     />
                     <button
                       type="button"
