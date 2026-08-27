@@ -32,7 +32,7 @@ const toolsNeedingUserId = ['create_incident', 'get_my_incidents'];
 const processMessage = async (userMessage, history, userId) => {
   try {
     const model = genAI.getGenerativeModel({
-      model: 'gemini-2.0-flash',
+      model: 'gemini-3.6-flash',
       systemInstruction: systemPrompt,
       tools: [{ functionDeclarations: toolDefinitions }],
     });
