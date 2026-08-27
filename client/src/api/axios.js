@@ -1,7 +1,11 @@
 import axios from 'axios';
 
+// Automatically switch between live and local backend
+const isProduction = import.meta.env.PROD || window.location.hostname !== 'localhost';
+const baseURL = import.meta.env.VITE_API_URL || (isProduction ? 'https://cyberguard-ai-ai-powered-cybersecurity.onrender.com/api' : 'http://localhost:5000/api');
+
 const API = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api',
+  baseURL,
   headers: {
     'Content-Type': 'application/json',
   },
