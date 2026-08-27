@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import API from '../../api/axios';
 import { AlertTriangle, Search, Trash2 } from 'lucide-react';
-import toast from 'react-hot-toast';
+import { useToast } from '../../context/ToastContext';
 
 const AdminIncidents = () => {
+  const toast = useToast();
   const [incidents, setIncidents] = useState([]);
   const [pagination, setPagination] = useState({ total: 0, page: 1, pages: 1 });
   const [filters, setFilters] = useState({ status: '', category: '', severity: '', search: '' });

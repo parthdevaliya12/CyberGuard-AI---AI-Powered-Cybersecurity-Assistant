@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { Toaster } from 'react-hot-toast';
 import { AuthProvider } from './context/AuthContext';
+import { ToastProvider } from './context/ToastContext';
 import ProtectedRoute from './components/common/ProtectedRoute';
 import MainLayout from './components/layouts/MainLayout';
 import Login from './pages/Login';
@@ -22,18 +22,8 @@ import NotFound from './pages/NotFound';
 function App() {
   return (
     <AuthProvider>
+      <ToastProvider>
       <BrowserRouter>
-        <Toaster
-          position="top-right"
-          toastOptions={{
-            duration: 3000,
-            style: {
-              background: '#1e293b',
-              color: '#f1f5f9',
-              border: '1px solid #334155',
-            },
-          }}
-        />
         <Routes>
           {/* Public Routes */}
           <Route path="/login" element={<Login />} />
@@ -144,6 +134,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
+      </ToastProvider>
     </AuthProvider>
   );
 }

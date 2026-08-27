@@ -2,9 +2,10 @@ import { useState, useEffect } from 'react';
 import API from '../api/axios';
 import { Bell, Check, CheckCheck, AlertTriangle, Shield, Info } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import toast from 'react-hot-toast';
+import { useToast } from '../context/ToastContext';
 
 const Notifications = () => {
+  const toast = useToast();
   const [notifications, setNotifications] = useState([]);
   const [unreadCount, setUnreadCount] = useState(0);
   const [loading, setLoading] = useState(true);

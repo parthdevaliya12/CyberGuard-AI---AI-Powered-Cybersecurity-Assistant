@@ -14,9 +14,10 @@ import {
   Search,
   FileText,
 } from 'lucide-react';
-import toast from 'react-hot-toast';
+import { useToast } from '../context/ToastContext';
 
 const AIAssistant = () => {
+  const toast = useToast();
   const [conversations, setConversations] = useState([]);
   const [activeConv, setActiveConv] = useState(null);
   const [messages, setMessages] = useState([]);

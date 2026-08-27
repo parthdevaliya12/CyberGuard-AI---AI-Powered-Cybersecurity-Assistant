@@ -2,9 +2,10 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import API from '../api/axios';
 import { ArrowLeft, AlertTriangle, Clock, Shield, Edit3 } from 'lucide-react';
-import toast from 'react-hot-toast';
+import { useToast } from '../context/ToastContext';
 
 const IncidentDetails = () => {
+  const toast = useToast();
   const { id } = useParams();
   const navigate = useNavigate();
   const [incident, setIncident] = useState(null);

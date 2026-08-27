@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import API from '../../api/axios';
 import { BookOpen, Plus, Edit3, Trash2, X } from 'lucide-react';
-import toast from 'react-hot-toast';
+import { useToast } from '../../context/ToastContext';
 
 const AdminKnowledge = () => {
+  const toast = useToast();
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);

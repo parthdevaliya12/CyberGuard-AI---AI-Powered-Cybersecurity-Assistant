@@ -2,9 +2,10 @@ import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import API from '../api/axios';
 import { User, Camera, Lock, Save } from 'lucide-react';
-import toast from 'react-hot-toast';
+import { useToast } from '../context/ToastContext';
 
 const Profile = () => {
+  const toast = useToast();
   const { user, updateUser } = useAuth();
   const [name, setName] = useState(user?.name || '');
   const [email, setEmail] = useState(user?.email || '');

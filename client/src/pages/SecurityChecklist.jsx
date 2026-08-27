@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import API from '../api/axios';
 import { CheckSquare, Square, Shield, TrendingUp } from 'lucide-react';
-import toast from 'react-hot-toast';
+import { useToast } from '../context/ToastContext';
 
 const SecurityChecklist = () => {
+  const toast = useToast();
   const [checklist, setChecklist] = useState(null);
   const [score, setScore] = useState(null);
   const [loading, setLoading] = useState(true);
